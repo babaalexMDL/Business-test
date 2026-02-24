@@ -3,35 +3,595 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Test</title>
+    <title>Alex Security | Freelance Cyber Security Consultant</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        /* Header/Navigation */
+        .header {
+            background: #0a1929;
+            color: white;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a1929 0%, #1a3a5f 100%);
+            color: white;
+            padding: 8rem 5% 5rem;
             text-align: center;
-            background-color: #f0f0f0;
         }
-        h1 {
-            color: #333;
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .container {
-            background-color: white;
-            padding: 20px;
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        /* Trust Indicators */
+        .trust-banner {
+            background: white;
+            padding: 2rem 5%;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .trust-logos {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+
+        .trust-item span {
+            font-size: 1.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0a1929;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eaeaea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #0a1929;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            background: #0a1929;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 5rem 5%;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #0a1929 0%, #1a3a5f 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .about-image .emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0.5rem;
+            display: inline-block;
+        }
+
+        .about-text h2 {
+            color: #0a1929;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-text li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc70 100%);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            color: #0a1929;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: #0a1929;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #0a1929;
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 5rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0a1929;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #eaeaea;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff88;
+        }
+
+        .submit-btn {
+            background: #0a1929;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1a3a5f;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1929;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            color: #00ff88;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-logos {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: #ff4444;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { background-color: #ff4444; }
+            50% { background-color: #ff6666; }
+            100% { background-color: #ff4444; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello from GitHub Pages! 🚀</h1>
-        <p>This is my Business Test site.</p>
-        <p>Repository: babaalexmdl/Business-test</p>
-        <p>Current time: <span id="time"></span></p>
+    <!-- Emergency Banner (shows urgency/trust) -->
+    <div class="emergency-banner">
+        ⚡ 24/7 Incident Response Available | Free Initial Consultation ⚡
     </div>
 
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">🛡️ AlexSecurity</div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">⚡ CISSP Certified | 10+ Years Experience</div>
+            <h1>Your Business Deserves Enterprise-Grade Security</h1>
+            <p>Former Fortune 500 Security Lead now helping small businesses stay safe. 
+               Penetration testing, security audits, and incident response for startups and SMBs.</p>
+            <a href="#contact" class="cta-button" style="background: #00ff88; color: #0a1929;">Free Security Audit</a>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-banner">
+        <div class="trust-logos">
+            <div class="trust-item"><span>🏆</span> CISSP Certified</div>
+            <div class="trust-item"><span>🔒</span> 50+ Companies Secured</div>
+            <div class="trust-item"><span>⚡</span> 15min Incident Response</div>
+            <div class="trust-item"><span>📋</span> GDPR/ISO 27001 Expert</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Security Services for Startups & SMBs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Penetration Testing</h3>
+                <p>Find vulnerabilities before hackers do. Full web app, network, and API testing with detailed reports.</p>
+                <div class="price">$1,499</div>
+                <small style="color: #666;">per engagement</small>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Security Audit</h3>
+                <p>Comprehensive review of your current security posture. Identify gaps and get actionable fixes.</p>
+                <div class="price">$899</div>
+                <small style="color: #666;">including report</small>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Incident Response</h3>
+                <p>Breach? I'll help contain, investigate, and recover. 24/7 emergency support for clients.</p>
+                <div class="price">$250/hr</div>
+                <small style="color: #666;">retainer options</small>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Security Training</h3>
+                <p>Train your team to recognize phishing, secure coding practices, and security awareness.</p>
+                <div class="price">$799</div>
+                <small style="color: #666;">team session</small>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔐</div>
+                <h3>Compliance Help</h3>
+                <p>GDPR, HIPAA, SOC2 preparation. Get audit-ready with documentation and implementation.</p>
+                <div class="price">$1,999</div>
+                <small style="color: #666;">starting at</small>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>vCISO Services</h3>
+                <p>Virtual CISO for startups. Strategic security guidance without full-time executive cost.</p>
+                <div class="price">$1,200/mo</div>
+                <small style="color: #666;">monthly retainer</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <div class="emoji">👨‍💻</div>
+                <h3>Alex Mendoza</h3>
+                <p>CISSP | CEH | AWS Security</p>
+                <div style="margin-top: 1rem;">
+                    <span class="cert-badge">🔒 Former Security Lead @ FinTech Unicorn</span>
+                    <span class="cert-badge">🎯 50+ Penetration Tests</span>
+                    <span class="cert-badge">📊 30+ Companies Secured</span>
+                </div>
+            </div>
+            <div class="about-text">
+                <h2>Why Work With Me?</h2>
+                <p>I left my corporate security role to help small businesses access the same level of protection that Fortune 500 companies have. No enterprise pricing, no complex contracts — just straight-forward security expertise.</p>
+                <ul>
+                    <li>✅ <strong>Big company experience, small business pricing</strong></li>
+                    <li>✅ <strong>No long-term contracts</strong> — month-to-month available</li>
+                    <li>✅ <strong>Plain English explanations</strong> — no technical jargon</li>
+                    <li>✅ <strong>Actionable reports</strong> — not just finding problems, but fixing them</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Worried About Your Security?</h2>
+            <p>Get a free 30-minute security assessment. I'll review your current setup and give you 3 actionable recommendations — no obligation.</p>
+            <a href="#contact" class="cta-button" style="background: #0a1929; color: white;">Claim Your Free Audit →</a>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Let's Secure Your Business</h2>
+        <form action="https://formspree.io/f/your-email" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Service Interested In</label>
+                <select id="service" name="service">
+                    <option>Penetration Testing</option>
+                    <option>Security Audit</option>
+                    <option>Incident Response</option>
+                    <option>Training</option>
+                    <option>Compliance</option>
+                    <option>vCISO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Tell me about your needs</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message →</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo" style="margin-bottom: 1rem;">🛡️ AlexSecurity</div>
+            <p>Enterprise security expertise for startups and small businesses</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2024 AlexSecurity. All rights reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.5;">CISSP is a registered trademark of (ISC)²</p>
+        </div>
+    </footer>
+
+    <!-- Simple Form Handling -->
     <script>
-        document.getElementById('time').textContent = new Date().toLocaleString();
+        // Form submission handling (works with Formspree)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // You can add validation or tracking here
+            console.log('Form submitted');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Track button clicks (for validation metrics)
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('CTA clicked:', this.textContent);
+                // You could send this to Google Analytics later
+            });
+        });
     </script>
 </body>
 </html>
