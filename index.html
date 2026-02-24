@@ -517,39 +517,48 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Let's Secure Your Business</h2>
-        <form action="https://formspree.io/f/mbdapnjp" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="service">Service Interested In</label>
-                <select id="service" name="service">
-                    <option>Penetration Testing</option>
-                    <option>Security Audit</option>
-                    <option>Incident Response</option>
-                    <option>Training</option>
-                    <option>Compliance</option>
-                    <option>vCISO</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Tell me about your needs</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message →</button>
-        </form>
-    </section>
+<section id="contact" class="contact">
+    <h2 class="section-title">Let's Secure Your Business</h2>
+    <form action="https://formspree.io/f/mbdapnjp" method="POST">
+        <!-- These hidden fields help Formspree -->
+        <input type="hidden" name="_subject" value="New Security Consultation Request">
+        <input type="hidden" name="_next" value="https://babaalexmdl.github.io/Business-test/thanks.html">
+        
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service">
+                <option value="Penetration Testing">Penetration Testing</option>
+                <option value="Security Audit">Security Audit</option>
+                <option value="Incident Response">Incident Response</option>
+                <option value="Training">Training</option>
+                <option value="Compliance">Compliance</option>
+                <option value="vCISO">vCISO</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Tell me about your needs</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message →</button>
+    </form>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
